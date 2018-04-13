@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "\033[0;37m########################################\033[0;37m" 
-echo '\033[00;32mAutomatic instalation masternode 3DCoin\033[00;32m'
+echo '\033[00;32mAutomatic installation masternode 3DCoin\033[00;32m'
 echo "\033[0;37m########################################\033[0;37m" 
 sleep 1
 echo ''
@@ -30,7 +30,7 @@ sudo swapon /swapfile
 echo "/swapfile none swap sw 0 0" >> /etc/fstab
 sleep 2 
 echo "\033[1;31m########################################\033[0m"
-echo "\033[00;32mDone - the account is setup\033[00;32m"
+echo "\033[00;32mDone - Swapfile \033[00;32m"
 echo "\033[1;31m########################################\033[0m"
 sleep 4
 echo "\033[1;31m########################################\033[0m"
