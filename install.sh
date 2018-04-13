@@ -3,12 +3,12 @@ echo "\033[0;37m########################################\033[0;37m"
 echo '\033[00;32mAutomatic instalation masternode 3DCoin\033[00;32m'
 echo "\033[0;37m########################################\033[0;37m" 
 sleep 1
-echo '\033[1;31m\033[1;31m'
+echo ''
 ip=$(hostname -i)
 read -p "PLEASE ENTER RPC USER:" username
 read -p "PLEASE ENTER RPC PASSWORD:" rootpass
 read -p "PLEASE ENTER PRIVATEKEY MASTERNODE:" pv
-echo '\033[1;31m\033[1;31m'
+echo ''
 sleep 1
 echo "\033[0;37m########################################\033[0;37m" 
 sleep 2
