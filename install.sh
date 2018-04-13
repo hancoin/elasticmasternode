@@ -4,9 +4,9 @@ echo '\033[00;32mAutomatic instalation masternode 3DCoin\033[00;32m'
 echo "\033[0;37m########################################\033[0;37m" 
 sleep 1
 echo '\033[1;31m\033[1;31m'
-read -p "PLEASE ENTER IP VPS:" ip
-read -p "PLEASE ENTER USERNAME ROOT:" username
-read -p "PLEASE ENTER VPS PASSWORD:" rootpass
+ip=$(hostname -i)
+read -p "PLEASE ENTER RPC USER:" username
+read -p "PLEASE ENTER RPC PASSWORD:" rootpass
 read -p "PLEASE ENTER PRIVATEKEY MASTERNODE:" pv
 echo '\033[1;31m\033[1;31m'
 sleep 1
@@ -58,15 +58,16 @@ sleep 4
 echo "\033[1;31m########################################\033[0m"
 echo "\033[00;32mAutogen .....\033[00;32m" 
 echo "\033[1;31m########################################\033[0m"
-./3dcoin/autogen.sh
+cd 3dcoin
+./autogen.sh
 echo "\033[1;31m########################################\033[0m"
 echo "\033[00;32mConfigure .....\033[00;32m" 
 echo "\033[1;31m########################################\033[0m"
-./3dcoin/configure --disable-tests --disable-gui-tests --without-gui
+./configure --disable-tests --disable-gui-tests --without-gui
 echo "\033[1;31m########################################\033[0m"
 echo "\033[00;32mMake install 3DCoin core\033[00;32m"
 echo "\033[1;31m########################################\033[0m"
-make install /3dcoin/
+make install
 sleep 2
 echo "\033[1;31m########################################\033[0m"
 echo "\033[00;32mCompile 3dcoin core done\033[00;32m"
@@ -105,7 +106,8 @@ cd /usr/local/bin
 chmod 755 check.sh
 cd ~
 line="*/1 * * * * /usr/local/bin/check.sh"
-(crontab -u root -l; echo "$line" ) | crontab -u root -
+echo "$line" | crontab -u root -
+
 sleep 2
 echo "\033[1;31m########################################\033[0m"
 echo "\033[00;32m3DCoin core Instalation complete\033[00;32m"
@@ -114,4 +116,3 @@ echo "\033[00;32mMasternode start automatically after reboot\033[00;32m"
 echo "\033[1;31m########################################\033[0m" 
 sleep 4
 reboot
-
