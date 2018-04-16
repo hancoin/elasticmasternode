@@ -4,7 +4,7 @@ echo '\033[00;32mAutomatic installation masternode 3DCoin\033[00;32m'
 echo "\033[0;37m########################################\033[0;37m" 
 sleep 1
 echo ''
-ip=$(hostname -i)
+read -p "PLEASE ENTER VPS IP:" ip
 read -p "PLEASE ENTER RPC USER:" username
 read -p "PLEASE ENTER RPC PASSWORD:" rootpass
 read -p "PLEASE ENTER PRIVATEKEY MASTERNODE:" pv
