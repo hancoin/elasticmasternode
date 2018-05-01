@@ -5,10 +5,10 @@
 ##################################################
 if [ "$1" == "-multi" ];then
 printf "\033[0;37m################################################\033[0m\n" 
-printf '\033[00;32mAutomatic instalation Multi masternodes 3DCoin\033[0m\n'
+printf '\033[00;32mAutomatic installation for multi 3DCoin masternodes\033[0m\n'
 printf "\033[0;37m################################################\033[0m\n" 
 sleep 2
-printf "\033[1;31mPlease enter ip vps: (Exemple:111.111.111.111 222.222.222.222 333.333.333.333)\033[0m\n"
+printf "\033[1;31mPlease enter your vps ip's: (Exemple:111.111.111.111 222.222.222.222 333.333.333.333)\033[0m\n"
 read -p "IP HERE:" ip
 printf '\033[1m\n'
 sleep 2
@@ -48,11 +48,11 @@ sudo swapon /swapfile
 echo "/swapfile none swap sw 0 0" >> /etc/fstab
 sleep 2 
 printf "\033[1;31m########################################\033[0m\n"
-printf "\033[00;32mDone - the account is setup\033[0m\n"
+printf "\033[00;32mDone - Firewall/Swapfile setup\033[0m\n"
 printf "\033[1;31m########################################\033[0m\n"
 sleep 4
 printf "\033[1;31m########################################\033[0m\n"
-printf "\033[00;32mGit 3dcoin core .....\033[0m\n" 
+printf "\033[00;32mBuilding 3dcoin core from source .....\033[0m\n" 
 printf "\033[1;31m########################################\033[0m\n"
 sleep 2
 sudo git clone https://github.com/BlockchainTechLLC/3dcoin.git
@@ -163,7 +163,7 @@ done
 #############################################################
 elif [ "$1" == "-auto-update" ];then
 printf "\033[0;37m#######################################################\033[0m\n" 
-printf '\033[00;32mInsatall auto update (check masternode & check update version)\033[0m\n'
+printf '\033[00;32mInstall auto update (check masternode & check update version)\033[0m\n'
 printf "\033[0;37m#######################################################\033[0m\n" 
 sleep 2
 # choose auto update masternode or multi masternode
@@ -345,7 +345,7 @@ fi
 ##################################################
 else
 printf "\033[0;37m########################################\033[0m\n" 
-printf '\033[00;32mAutomatic instalation masternode 3DCoin\033[0m\n'
+printf '\033[00;32mAutomatic installation for 3DCoin masternode\033[0m\n'
 printf "\033[0;37m########################################\033[0m\n" 
 sleep 1
 printf ''
@@ -374,11 +374,11 @@ sudo swapon /swapfile
 echo "/swapfile none swap sw 0 0" >> /etc/fstab
 sleep 2 
 printf "\033[1;31m########################################\033[0m\n"
-printf "\033[00;32mDone - the account is setup\033[0m\n"
+printf "\033[00;32mDone - Firewall/Swapfile setup\033[0m\n"
 printf "\033[1;31m########################################\033[0m\n"
 sleep 4
 printf "\033[1;31m########################################\033[0m\n"
-printf "\033[00;32mGit 3dcoin core .....\033[0m\n" 
+printf "\033[00;32mBuilding 3dcoin core from source .....\033[0m\n" 
 printf "\033[1;31m########################################\033[0m\n"
 sleep 2
 sudo git clone https://github.com/BlockchainTechLLC/3dcoin.git
@@ -476,7 +476,7 @@ echo "$line" | crontab -u root -
 
 sleep 2
 printf "\033[1;31m########################################\033[0m\n"
-printf "\033[00;32m3DCoin core Instalation complete\033[0m\n"
+printf "\033[00;32m3DCoin core Installation complete\033[0m\n"
 printf "\033[1;31m########################################\033[0m\n"
 printf "\033[00;32mMasternode start automatically after reboot\033[0m\n"
 printf "\033[1;31m########################################\033[0m\n" 
