@@ -8,7 +8,7 @@ printf "\033[0;37m########################################\033[0m\n"
 # update single masternode 
 3dcoin-cli stop
 echo "Please wait......."
-sleep 15
+sleep 10
 rm /usr/local/bin/3dcoind
 dir=$(find / -type d -name '3dcoin' -print) 
 cd $dir
