@@ -144,7 +144,7 @@ chmod 755 check.sh
 chmod 755 update.sh
 cd ~
 line="@reboot /usr/local/bin/3dcoind
-*/5 * * * * /usr/local/bin/check.sh
+*/15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 
@@ -213,7 +213,7 @@ cd ~
 export EDITOR=nano
 crontab -r 
 line="@reboot /usr/local/bin/3dcoind
-*/5 * * * * /usr/local/bin/check.sh
+*/15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 reboot
@@ -278,7 +278,7 @@ chmod 755 update.sh
 cd ~
 crontab -r
 line="@reboot /usr/local/bin/3dcoind
-*/5 * * * * /usr/local/bin/check.sh
+*/15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 reboot'
@@ -470,7 +470,7 @@ chmod 755 check.sh
 chmod 755 update.sh
 cd ~
 line="@reboot /usr/local/bin/3dcoind
-*/5 * * * * /usr/local/bin/check.sh
+*/15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 
