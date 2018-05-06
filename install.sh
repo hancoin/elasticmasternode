@@ -418,7 +418,7 @@ line="@reboot /usr/local/bin/3dcoind
 */15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/source update.sh"
 echo "$line" | crontab -u root -
-reboot
+service cron restart
 # auto update multi masternode
 elif [[ $REPLY =~ ^[Mm]$ ]]; then
 printf "Please enter your vps ip's: ${RED}(Exemple:111.111.111.111 222.222.222.222 333.333.333.333)${NC}\n"
@@ -483,7 +483,7 @@ line="@reboot /usr/local/bin/3dcoind
 */15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/source update.sh"
 echo "$line" | crontab -u root -
-reboot'
+service cron restart'
 done
 else
 exit;
