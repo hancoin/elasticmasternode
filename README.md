@@ -30,7 +30,14 @@ chmod 755 install.sh
 * VPS PASSWORD: enter your vps password.
 * PRIVATEKEY MASTERNODE: this is the private key you generated from your wallet debug console.
 
-
+****************************************
+Install Auto Update Masternode & Auto check Masternode
+****************************************
+```
+curl -O https://raw.githubusercontent.com/BlockchainTechLLC/masternode/master/install.sh > install.sh
+chmod 755 install.sh
+./install.sh -auto-update
+```
 
 # Update to last version:
 ```
