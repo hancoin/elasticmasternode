@@ -31,7 +31,7 @@ chmod 755 install.sh
 * PRIVATEKEY MASTERNODE: this is the private key you generated from your wallet debug console.
 
 ****************************************
-Install Auto Update Masternode & Auto check Masternode
+Install Auto Update & Auto check Masternode
 ****************************************
 ```
 curl -O https://raw.githubusercontent.com/BlockchainTechLLC/masternode/master/install.sh > install.sh
