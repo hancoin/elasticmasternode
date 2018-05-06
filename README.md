@@ -1,9 +1,15 @@
-# masternode
+# Masternode
 3DCoin Masternode auto installer
 
 ****************************************
-Automatic installation 3DCoin masternode
+Automatic installation Single 3DCoin masternode
 ****************************************
+
+```
+curl -O https://raw.githubusercontent.com/BlockchainTechLLC/masternode/master/install.sh > install.sh
+chmod 755 install.sh
+./install.sh
+```
 
 * VPS IP: enter your VPS IP Address.
 * RPC USER: enter any string of numbers or letters, no special characters allowed
