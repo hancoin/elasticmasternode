@@ -12,10 +12,7 @@ printf "${GREEN}Automatic installation for multi 3DCoin masternodes${NC}\n"
 printf "${YELLOW}##################################################################${NC}\n" 
 sleep 2
 printf "Please enter your vps ip's: ${RED}(Exemple:111.111.111.111 222.222.222.222 333.333.333.333)${NC}\n"
-unset ip
-while [ -z ${ip} ]; do
 read -p "IP HERE: " ip
-done
 printf "${YELLOW}################################################${NC}\n" 
 read -p "Do you want to use the same rpcuser & rpcpass for all vps)? (Y/N)" -n 1 -r
 echo    # (optional) move to a new line
