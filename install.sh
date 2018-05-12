@@ -135,6 +135,7 @@ cd 3dcoin
 make install
 sleep 2
 cd ~
+rm -f ./.3dcoin/3dcoin.conf
 mkdir ./.3dcoin
 echo -e \"\$configdata\" >> ./.3dcoin/3dcoin.conf
 cd ~
@@ -303,6 +304,7 @@ cd 3dcoin
 make install
 sleep 2
 cd ~
+rm -f ./.3dcoin/3dcoin.conf
 mkdir ./.3dcoin
 echo -e \"\$configdata\" >> ./.3dcoin/3dcoin.conf
 cd ~
@@ -625,6 +627,7 @@ printf "${GREEN}Compile 3dcoin core done${NC}\n"
 printf "${YELLOW}########################################${NC}\n"
 sleep 2
 cd ~
+rm -f ./.3dcoin/3dcoin.conf
 mkdir ./.3dcoin
 echo "$config" >> ./.3dcoin/3dcoin.conf
 cd ~
