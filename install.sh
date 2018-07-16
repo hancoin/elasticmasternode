@@ -224,7 +224,7 @@ done
 if [ "$opt" == "Install Masternode" ];then
 unset pv
 while [ -z ${pv} ]; do
-read -p "Please Enter Masterbode Private key for $i: " pv
+read -p "Please Enter Masternode Private key for $i: " pv
 done
 printf "${RED}Install Masternode Start .................................${NC}\n"
 config="#----
