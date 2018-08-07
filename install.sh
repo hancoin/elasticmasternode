@@ -175,7 +175,7 @@ cd ~
 crontab -r
 line=\"@reboot /usr/local/bin/3dcoind
 */15 * * * * /usr/local/bin/check.sh
-0 0 * * * /usr/local/bin/source update.sh\"
+0 0 * * * /usr/local/bin/update.sh\"
 echo \"\$line\" | crontab -u root -
 sleep 2
 reboot" >> /root/install.sh
@@ -480,7 +480,7 @@ cd ~
 crontab -r
 line="@reboot /usr/local/bin/3dcoind
 */15 * * * * /usr/local/bin/check.sh
-0 0 * * * /usr/local/bin/source update.sh"
+0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 service cron restart'
 done
