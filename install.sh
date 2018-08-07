@@ -344,7 +344,7 @@ cd ~
 crontab -r
 line=\"@reboot /usr/local/bin/3dcoind
 */15 * * * * /usr/local/bin/check.sh
-0 0 * * * /usr/local/bin/source update.sh\"
+0 0 * * * /usr/local/bin/update.sh\"
 echo \"\$line\" | crontab -u root -
 sleep 2
 reboot" >> /root/install.sh
@@ -415,7 +415,7 @@ export EDITOR=nano
 crontab -r 
 line="@reboot /usr/local/bin/3dcoind
 */15 * * * * /usr/local/bin/check.sh
-0 0 * * * /usr/local/bin/source update.sh"
+0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 service cron restart
 # auto update multi masternode
@@ -666,7 +666,7 @@ chmod 755 update.sh
 cd ~
 line="@reboot /usr/local/bin/3dcoind
 */15 * * * * /usr/local/bin/check.sh
-0 0 * * * /usr/local/bin/source update.sh"
+0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 
 sleep 2
