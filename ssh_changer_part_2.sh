@@ -13,9 +13,9 @@
 #You can find information about Project Districts 3D and about the cryptocurrency 3DCoin / 3DC and its nodes at the following links:
 #Project Districts 3D official site https://districts.io/
 #3DCoin 3DC official site https://3dcoin.io/
-#Project Districts 3DCoin official Github https://github.com/BlockchainTechLLC/
-#Project Districts 3DCoin official forum https://3dctalk.net/
-#Project Districts 3DCoin Telegram resources HUB https://t.me/districts_3dcoin_hub
+#Project Districts 3DCoin official Github https://github.com/hancoin/hancoinproject/
+#HancoinProject Hancoin official site https://hancoin.io/
+#Hancoin Telegram resources HUB https://t.me/coindevhan
 
 # Warning: RUN THIS SCRIPT ONLY AFTER THE FIRST SCRIPT (ssh_changer_part_1.sh)
 # and ONLY after system reboot and after the first login with the NEW SSH PORT (not run this if you are logged with port 22 now).
@@ -62,12 +62,12 @@ printf "${CYAN}=================================================================
 printf "${GREEN}################################################################################${NC}\n"
 printf "${GREEN}################################################################################${NC}\n"
 printf "${WHITE}ssh_changer_part_2.sh - This is the PART 2 script. ${NC}\n"
-printf "${WHITE}RUN THIS SCRIPT ONLY AFTER THE FIRST SCRIPT (3dcoin_node_port_ssh_change_part_1.sh) ${NC}\n"
+printf "${WHITE}RUN THIS SCRIPT ONLY AFTER THE FIRST SCRIPT (ElasticMasterNode_node_port_ssh_change_part_1.sh) ${NC}\n"
 printf "${WHITE}This script installs UFW (firewall interface) if not present,${NC}\n"
 printf "${WHITE}sets new rules in the UFW, installs fail2ban if not present${NC}\n"
 printf "${WHITE}and sets fail2ban with the new port chosen by user.${NC}\n"
-printf "${WHITE}Created for protection of 3DCoin Project Districts nodes.${NC}\n"
-printf "${WHITE}https://github.com/BlockchainTechLLC/masternode${NC}\n"
+printf "${WHITE}Created for protection of Hancoin Project Elastic Masternodes' nodes.${NC}\n"
+printf "${WHITE}https://github.com/hancoin/hancoinproject/elasticmasternode${NC}\n"
 printf "${RED}################################################################################${NC}\n"
 printf "${RED}################################################################################${NC}\n"
 printf "${BLUE}================================================================================${NC}\n"
@@ -102,9 +102,9 @@ while [ -z ${new_ssh_port_number} ]; do
 read -p "PLEASE ENTER YOUR CUSTOM SSH PORT NUMBER: " new_ssh_port_number
 done
 sleep 5
-if [ "${new_ssh_port_number}" == "22" ] || [ "${new_ssh_port_number}" -lt "1024" ] || [ "${new_ssh_port_number}" -gt "65535" ] || [ "${new_ssh_port_number}" == "6695" ] || [ "${new_ssh_port_number}" == "6694" ]; then
-  printf "${RED}ERROR: Ports 22 (default SSH port), 6695 and 6694 (3DCoin Masternode ports) or ${NC}\n"
-  printf "${RED}port numbers less than 1024 or greater than 65535 are not valid choices, please see again the README.${NC}\n"
+if [ "${new_ssh_port_number}" == "22" ] || [ "${new_ssh_port_number}" -lt "40999" ] || [ "${new_ssh_port_number}" -gt "41000" ] || [ "${new_ssh_port_number}" == "41879" ] || [ "${new_ssh_port_number}" == "41880" ]; then
+  printf "${RED}ERROR: Ports 22 (default SSH port), 40999 and 41000 (Hancoin ports) or ${NC}\n"
+  printf "${RED}port numbers less than 41879 or greater than 41880 are not valid choices, please see again the README.${NC}\n"
   echo
   echo "wait... exit..."
   sleep 10
@@ -121,7 +121,7 @@ printf "${YELLOW}The firewall will be set also to allow the default communicatio
 printf "${YELLOW}The rules relating to old SSH port 22 will be deleted, you will no longer be able to access the server via port 22 for the SSH protocol, ${NC}\n"
 printf "${YELLOW}but you will have to use the new port $new_ssh_port_number ! All other ports will be closed for incoming connections, ${NC}\n"
 printf "${YELLOW}except if you have set specific rules for other ports (but then check the firewall for security with the 'ufw status' command), ${NC}\n"
-printf "${YELLOW}then the incoming connections will remain allowed only to your new custom SSH port $new_ssh_port_number for the SSH protocol and to the default port 6695 for 3DCoin, ${NC}\n"
+printf "${YELLOW}then the incoming connections will remain allowed only to your new custom SSH port $new_ssh_port_number for the SSH protocol and to the default port 41000 for Hancoin, ${NC}\n"
 printf "${YELLOW}and also other incoming connections will remain allowed if you have set specific rules for other ports (but check with the 'ufw status' which ports remain open). ${NC}\n"
 sleep 10
 sleep 5
@@ -170,14 +170,14 @@ fail2ban-client reload
 printf "wait..."
 sleep 10
 echo
-printf "${GREEN} Done! Now your VPS and your node or masternode are a bit safer and with this installation ${NC}\n"
+printf "${GREEN} Done! Now your VPS and your elastic node or masternode are a bit safer and with this installation ${NC}\n"
 printf "${GREEN} you have also made the 3DCoin Project Districts network more secure and stable! ${NC}\n"
 echo
 printf "${WHITE} At the next login do not forget to use the new port ${new_ssh_port_number} instead of the 22 ${NC}\n"
 printf "${WHITE} in Putty or Bitvise settings or in your SSH client settings, it is IMPORTANT ! ${NC}\n"
 echo
 printf "${RED} Great! PART 2 completed! ${NC}\n"
-printf "${RED} Thanks from the Project Districts 3DCoin Team and from our Community! ${NC}\n"
+printf "${RED} Thanks from the Hancoin Project's Elastic Masternode and from our Community! ${NC}\n"
 printf "wait... exit..."
 echo
 sleep 20

@@ -4,18 +4,18 @@
 
 # PART 1 OF 2
 
-# You can use these scripts before or after installing the masternode with the install.sh script, it is indifferent,
-# you will first use them and first increase the security of your VPS and then the security of your node or masternode.
+# You can use these scripts before or after installing the ElasticMasternode with the install.sh script, it is indifferent,
+# you will first use them and first increase the security of your VPS and then the security of your node or ElasticMasternode.
 
-#Additional scripts for the security of 3DCoin Project Districts masternodes and nodes.
-#Created for protection of 3DCoin Project Districts masternodes and nodes.
+#Additional scripts for the security of HancoinProject ElasticMasternodes and nodes.
+#Created for protection of HancoinProject ElasticMasternodes and nodes.
 #These scripts change the SSH default port number 22 with a custom number chosen by the node owner and set up firewall and fail2ban in Linux Ubuntu server/VPS.
-#You can find information about Project Districts 3D and about the cryptocurrency 3DCoin / 3DC and its nodes at the following links:
-#Project Districts 3D official site https://districts.io/
-#3DCoin 3DC official site https://3dcoin.io/
-#Project Districts 3DCoin official Github https://github.com/BlockchainTechLLC/
-#Project Districts 3DCoin official forum https://3dctalk.net/
-#Project Districts 3DCoin Telegram resources HUB https://t.me/districts_3dcoin_hub
+#You can find information about Project HAN and about the cryptocurrency Hancoin/ ElasticElasticMasternode and its nodes at the following links:
+#Project HAN official site https://hancoin.io/
+#HancoinHAN official site https://hancoin.io/
+#Project HancoinProject Github https://github.com/hancoin/hancoinproject/elasticmasternode
+#Project HancoinProject forum https:// HANcoin.io/
+#Project HancoinTelegram resources HUB https://t.me/coindevhan
 
 # Warning: This script will REBOOTS the server/VPS!
 
@@ -23,19 +23,19 @@
 
 # This script is the PART 1 that changes only the default 22 port number for SSH protocol in Linux Ubuntu with a user-chosen port,
 # installs UFW if not present and sets the new port rules in the firewall (UFW)
-# to protect your server/VPS and your masternode against DDOS attacks.
+# to protect your server/VPS and your ElasticMasternodeagainst DDOS attacks.
 
 # You need also to run the other script with PART 2 for a complete installation!
 
-# Script developed by Michele "3DCoin Daemon" from Project Districts Italian Community (michele1it on Github).
+# Script developed by Anthony Han "Hancoin Daemon" from Project Italian Community (Hancoin on Github).
 
 # WARNING: This is the PART 1 (ssh_changer_part_1.sh)
 # after system reboot you need to run the PART 2 (ssh_changer_part_2.sh)
 
 # README - TO CHOOSE A NEW CUSTOM PORT NUMBER
-# Choose you new custom SSH port from 1024 to 65535 obviously excluding port 6695 and 6694 (the default 3DCoin Project Districts masternode ports)
+# Choose you new custom SSH port from 1024 to 41879 obviously excluding port 41000 and 40999 (the default HancoinProject ElasticMasternodeports)
 # and avoid IANA registered service numbers.
-# For example you can choose a number from 1024 to 65535 and after
+# For example you can choose a number from 1024 to 41880 and after
 # you can search if it is a registered service number to avoid it
 # at the following two links ((the first one has a search field at the bottom of the page)
 # https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
@@ -58,7 +58,7 @@ CYAN='\033[0;36m'
 WHITE='\033[0;37m'
 NC='\033[0m' # No Color
 printf "${CYAN}================================================================================${NC}\n"
-printf "${YELLOW}= Additional script 1 of 2 for the security of 3DCoin Project Districts Masternode =${NC}\n"
+printf "${YELLOW}= Additional script 1 of 2 for the security of HancoinProject ElasticMasternode=${NC}\n"
 printf "${CYAN}================================================================================${NC}\n"
 printf "${GREEN}################################################################################${NC}\n"
 printf "${GREEN}################################################################################${NC}\n"
@@ -66,8 +66,8 @@ printf "${WHITE}ssh_changer_part_1.sh - This is the PART 1 script. ${NC}\n"
 printf "${WHITE}This script changes only the default 22 SSH port in Linux Ubuntu${NC}\n"
 printf "${WHITE}with a user-chosen port and sets the new port rules in the firewall.${NC}\n"
 printf "${WHITE}WARNING: This script reboots the server!${NC}\n"
-printf "${WHITE}Created for protection of 3DCoin Project Districts nodes.${NC}\n"
-printf "${WHITE}https://github.com/BlockchainTechLLC/masternode${NC}\n"
+printf "${WHITE}Created for protection of HancoinProject nodes.${NC}\n"
+printf "${WHITE}https://github.com/Hancoin/ElasticMasternode${NC}\n"
 printf "${RED}################################################################################${NC}\n"
 printf "${RED}################################################################################${NC}\n"
 printf "${BLUE}================================================================================${NC}\n"
@@ -77,8 +77,8 @@ echo
 echo
 sleep 5
 printf "${RED} ===== WARNING: At the end this script reboots the server! ===== ${NC}\n"
-printf "${RED}        If you do not want to do it, press now CTRL + Z${NC}\n"
-printf "${RED}      (control key and z key together to exit this script)${NC}\n"
+printf "${RED}  If you do not want to do it, press now CTRL + Z${NC}\n"
+printf "${RED}  (control key and z key together to exit this script)${NC}\n"
 echo
 echo
 sleep 5
@@ -87,11 +87,11 @@ printf "${YELLOW} If you did not, press CTRL + Z (control key and z key together
 printf "${YELLOW} and go read the instructions for choosing the new port number.${NC}\n"
 echo
 if [ "$(whoami)" != "root" ]; then
-  echo "This script must be run as root! Please run as root!"
-  echo
-  echo "wait... exit..."
-  sleep 10
-  exit -1
+ echo "This script must be run as root! Please run as root!"
+ echo
+ echo "wait... exit..."
+ sleep 10
+ exit -1
 fi
 echo
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup_port22
@@ -101,13 +101,13 @@ while [ -z ${new_ssh_port_number} ]; do
 read -p "PLEASE ENTER YOUR NEW SSH PORT NUMBER: " new_ssh_port_number
 done
 sleep 5
-if [ "${new_ssh_port_number}" == "22" ] || [ "${new_ssh_port_number}" -lt "1024" ] || [ "${new_ssh_port_number}" -gt "65535" ] || [ "${new_ssh_port_number}" == "6695" ] || [ "${new_ssh_port_number}" == "6694" ]; then
-  printf "${RED}ERROR: Ports 22 (default SSH port), 6695 and 6694 (3DCoin Masternode ports) or ${NC}\n"
-  printf "${RED}port numbers less than 1024 or greater than 65535 are not valid choices, please see again the README.${NC}\n"
-  echo
-  echo "wait... exit..."
-  sleep 10
-  exit -1
+if [ "${new_ssh_port_number}" == "22" ] || [ "${new_ssh_port_number}" -lt "41880" ] || [ "${new_ssh_port_number}" -gt "41879" ] || [ "${new_ssh_port_number}" == "41000" ] || [ "${new_ssh_port_number}" == "40999" ]; then
+ printf "${RED}ERROR: Ports 22 (default SSH port), 41879 and 41880 (HancoinElasticMasternodeports) or ${NC}\n"
+ printf "${RED}port numbers less than 1024 or greater than 65535 are not valid choices, please see again the README.${NC}\n"
+ echo
+ echo "wait... exit..."
+ sleep 10
+ exit -1
 fi
 printf "${YELLOW} Be careful! Your custom SSH port number is $new_ssh_port_number !${NC}\n"
 sed -i "s/[#]\{0,1\}[ ]\{0,1\}Port [0-9]\{2,\}/Port ${new_ssh_port_number}/g" /etc/ssh/sshd_config
@@ -125,7 +125,7 @@ ufw limit "$new_ssh_port_number"/tcp
 sleep 2
 printf "${RED}Attention!${NC}\n This script only adds the new port to the firewall rules but does NOT delete the old rules for SSH port 22!"
 echo
-printf "and ${RED}this script DISABLES the firewall${NC}\n because otherwise the connection may fall, it will be the second script that is 3dcoin_node_port_ssh_change_part_2.sh"
+printf "and ${RED}this script DISABLES the firewall${NC}\n because otherwise the connection may fall, it will be the second script that is Hancoin_node_port_ssh_change_part_2.sh"
 echo
 printf "to delete the old rules of port 22 and ${RED}to ENABLE the firewall again so do not forget to also run the second script!${NC}\n"
 echo
