@@ -4,11 +4,11 @@ GREEN='\033[00;32m'
 YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 ##################################################
-####Install Multi Masternode with Auto-update#####
+####Install Elastic Masternode with Auto-update#####
 ##################################################
 if [ "$1" == "-multi" ];then
 printf "${YELLOW}##################################################################${NC}\n" 
-printf "${GREEN}Automatic installation for multi 3DCoin masternodes${NC}\n"
+printf "${GREEN}Automatic installation for multi Hancoin masternodes${NC}\n"
 printf "${YELLOW}##################################################################${NC}\n" 
 sleep 2
 printf "Please enter your vps ip's: ${RED}(Exemple:111.111.111.111 222.222.222.222 333.333.333.333)${NC}\n"
@@ -43,7 +43,7 @@ options=("Install Masternode" "Install Node")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Install Masternode")
+        "Install Elastic Masternode")
              break
            ;;
         "Install Node")
@@ -55,7 +55,7 @@ done
 if [ "$opt" == "Install Masternode" ];then
 unset pv
 while [ -z ${pv} ]; do
-read -p "Please Enter Masternode Private key for $i: " pv
+read -p "Please Enter Elastic Masternode Private key for $i: " pv
 done
 printf "${RED}Install Masternode Start .................................${NC}\n"
 config="#----
@@ -114,7 +114,7 @@ sudo swapon /swapfile
 echo \"/swapfile none swap sw 0 0\" >> /etc/fstab
 sleep 4
 cd ~
-sudo git clone https://github.com/BlockchainTechLLC/3dcoin.git
+sudo git clone https://github.com/Hancoin/Hancoinproject.git
 yes | sudo apt-get update 
 export LC_ALL=en_US.UTF-8
 yes | sudo apt-get install build-essential libtool autotools-dev autoconf automake autogen pkg-config libgtk-3-dev libssl-dev libevent-dev bsdmainutils
@@ -126,15 +126,15 @@ yes | sudo apt-get install libdb4.8-dev libdb4.8++-dev
 yes | sudo apt-get install libminiupnpc-dev 
 yes | sudo apt-get install libzmq3-dev
 sleep 2
-cd 3dcoin
+cd Hancoin
 ./autogen.sh
 ./configure --disable-tests --disable-gui-tests --without-gui
 make install
 sleep 2
 cd ~
-rm -f ./.3dcoin/3dcoin.conf
-mkdir ./.3dcoin
-echo -e \"\$configdata\" >> ./.3dcoin/3dcoin.conf
+rm -f ./.Hancoin/Hancoin.conf
+mkdir ./.Hancoin
+echo -e \"\$configdata\" >> ./.Hancoin/Hancoin.conf
 cd ~
 echo \"#!/bin/bash
 HOME=/root
@@ -143,9 +143,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-if ! ps -C 3dcoind > /dev/null
+if ! ps -C hancoind > /dev/null
 then
-3dcoind
+hancoind
 fi\" >> /usr/local/bin/check.sh
 echo \"#!/bin/bash
 HOME=/root
@@ -154,18 +154,18 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-content="\\$"\$(GET https://raw.githubusercontent.com/BlockchainTechLLC/3dcoin/master/configure.ac)
-localcontent="\\$"\$(cat /root/3dcoin/configure.ac)
+content="\\$"\$(GET https://raw.githubusercontent.com/hancoin/hancoinproject/master/configure.ac)
+localcontent="\\$"\$(cat /root/Hancoin/configure.ac)
 if [ "\\$"\""\\$"\$content"\\$"\" == "\\$"\""\\$"\$localcontent"\\$"\" ];then 
 exit;
 else
-killall -9 3dcoind
-rm -f /usr/local/bin/3dcoind
-dir="\\$"\$(find / -type d -name "3dcoin" -print) 
+killall -9 hancoind
+rm -f /usr/local/bin/hancoind
+dir="\\$"\$(find / -type d -name "Hancoin" -print) 
 cd "\\$"\$dir
 git pull
 make install || { ./autogen.sh && ./configure --disable-tests --disable-gui-tests --without-gui && make install;  }
-3dcoind
+hancoind
 fi\" >> /usr/local/bin/update.sh
 cd ~
 cd /usr/local/bin
@@ -173,7 +173,7 @@ chmod 755 check.sh
 chmod 755 update.sh
 cd ~
 crontab -r
-line=\"@reboot /usr/local/bin/3dcoind
+line=\"@reboot /usr/local/bin/hancoind
 */15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh\"
 echo \"\$line\" | crontab -u root -
@@ -191,7 +191,7 @@ yes | apt-get install sshpass
 for i in $ip
 do
 printf "${YELLOW}################################################${NC}\n" 
-printf "${GREEN}Data For Vps ip '${RED}$i${NC}${GREEN}'${NC}\n" 
+printf "${GREEN}Data For LocalHost/VPS ip '${RED}$i${NC}${GREEN}'${NC}\n" 
 printf "${YELLOW}################################################${NC}\n" 
 unset rootpass
 while [ -z ${rootpass} ]; do
@@ -208,7 +208,7 @@ read -s -p "PLEASE ENTER RPC USER: " pass
 done
 printf "\n${YELLOW}################################################${NC}\n" 
 PS3='Please enter your choice: '
-options=("Install Masternode" "Install Node")
+options=("Install Elastic Masternode" "Install Elastic Node")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -224,9 +224,9 @@ done
 if [ "$opt" == "Install Masternode" ];then
 unset pv
 while [ -z ${pv} ]; do
-read -p "Please Enter Masternode Private key for $i: " pv
+read -p "Please Enter Elastic Masternode Private key for $i: " pv
 done
-printf "${RED}Install Masternode Start .................................${NC}\n"
+printf "${RED}Install Elastic Masternode Start .................................${NC}\n"
 config="#----
 \nrpcuser=\"'$username'\"
 \nrpcpassword=\"'$pass'\"
@@ -283,7 +283,7 @@ sudo swapon /swapfile
 echo \"/swapfile none swap sw 0 0\" >> /etc/fstab
 sleep 4
 cd ~
-sudo git clone https://github.com/BlockchainTechLLC/3dcoin.git
+sudo git clone https://github.com/BlockchainTechLLC/Hancoin.git
 yes | sudo apt-get update 
 export LC_ALL=en_US.UTF-8
 yes | sudo apt-get install build-essential libtool autotools-dev autoconf automake autogen pkg-config libgtk-3-dev libssl-dev libevent-dev bsdmainutils
@@ -295,15 +295,15 @@ yes | sudo apt-get install libdb4.8-dev libdb4.8++-dev
 yes | sudo apt-get install libminiupnpc-dev 
 yes | sudo apt-get install libzmq3-dev
 sleep 2
-cd 3dcoin
+cd Hancoin
 ./autogen.sh
 ./configure --disable-tests --disable-gui-tests --without-gui
 make install
 sleep 2
 cd ~
-rm -f ./.3dcoin/3dcoin.conf
-mkdir ./.3dcoin
-echo -e \"\$configdata\" >> ./.3dcoin/3dcoin.conf
+rm -f ./.Hancoin/Hancoin.conf
+mkdir ./.Hancoin
+echo -e \"\$configdata\" >> ./.ElasticMasterNode/elasticmasternode.conf
 cd ~
 echo \"#!/bin/bash
 HOME=/root
@@ -312,9 +312,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-if ! ps -C 3dcoind > /dev/null
+if ! ps -C hancoind > /dev/null
 then
-3dcoind
+hancoind
 fi\" >> /usr/local/bin/check.sh
 echo \"#!/bin/bash
 HOME=/root
@@ -323,18 +323,18 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-content="\\$"\$(GET https://raw.githubusercontent.com/BlockchainTechLLC/3dcoin/master/configure.ac)
-localcontent="\\$"\$(cat /root/3dcoin/configure.ac)
+content="\\$"\$(GET https://raw.githubusercontent.com/hancoin/hancoinproject/master/configure.ac)
+localcontent="\\$"\$(cat /root/Hancoin/configure.ac)
 if [ "\\$"\""\\$"\$content"\\$"\" == "\\$"\""\\$"\$localcontent"\\$"\" ];then 
 exit;
 else
-killall -9 3dcoind
-rm -f /usr/local/bin/3dcoind
-dir="\\$"\$(find / -type d -name "3dcoin" -print) 
+killall -9 hancoind
+rm -f /usr/local/bin/hancoind
+dir="\\$"\$(find / -type d -name "Hancoin" -print) 
 cd "\\$"\$dir
 git pull
 make install || { ./autogen.sh && ./configure --disable-tests --disable-gui-tests --without-gui && make install;  }
-3dcoind
+hancoind
 fi\" >> /usr/local/bin/update.sh
 cd ~
 cd /usr/local/bin
@@ -342,7 +342,7 @@ chmod 755 check.sh
 chmod 755 update.sh
 cd ~
 crontab -r
-line=\"@reboot /usr/local/bin/3dcoind
+line=\"@reboot /usr/local/bin/hancoind
 */15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh\"
 echo \"\$line\" | crontab -u root -
@@ -359,15 +359,15 @@ exit;
 fi
 
 #############################################################
-###only install auto update masternode or multi masternode###
+###only install auto update masternode or Elastic Masternode###
 #############################################################
 elif [ "$1" == "-auto-update" ];then
 printf "${YELLOW}#########################################################################${NC}\n" 
 printf "${GREEN}Install auto update (check masternode & check update version)${NC}\n"
 printf "${YELLOW}#########################################################################${NC}\n" 
 sleep 2
-# choose auto update masternode or multi masternode
-read -p "install auto update Masternode 3DCoin (Single vps) or Multi Masternode (Multi vps)? (S/M)" -n 1 -r
+# choose auto update masternode or Elastic Masternode
+read -p "install auto update Masternode Hancoin (Single vps) or Elastic Masternode (Multi vps)? (S/M)" -n 1 -r
 echo    # (optional) move to a new line
 # auto update masternode
 if [[ $REPLY =~ ^[Ss]$ ]]; then
@@ -382,9 +382,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-if ! ps -C 3dcoind > /dev/null
+if ! ps -C hancoind > /dev/null
 then
-3dcoind
+hancoind
 fi" >> /usr/local/bin/check.sh
 echo "#!/bin/bash
 HOME=/root
@@ -393,18 +393,18 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-content=\$(GET https://raw.githubusercontent.com/BlockchainTechLLC/3dcoin/master/configure.ac)
-localcontent=\$(cat /root/3dcoin/configure.ac)
+content=\$(GET https://raw.githubusercontent.com/hancoin/hancoinproject/master/configure.ac)
+localcontent=\$(cat /root/hancoin/configure.ac)
 if [ '\$content' == '\$localcontent' ];then
 exit;
 else
-killall -9 3dcoind
-rm -f /usr/local/bin/3dcoind
-dir=\$(find / -type d -name '3dcoin' -print) 
+killall -9 hancoind
+rm -f /usr/local/bin/hancoind
+dir=\$(find / -type d -name 'Hancoin' -print) 
 cd \$dir
 git pull
 make install || { ./autogen.sh && ./configure --disable-tests --disable-gui-tests --without-gui && make install;  }
-3dcoind
+hancoind
 fi" >> /usr/local/bin/update.sh
 cd ~
 cd /usr/local/bin
@@ -413,12 +413,12 @@ chmod 755 update.sh
 cd ~
 export EDITOR=nano
 crontab -r 
-line="@reboot /usr/local/bin/3dcoind
+line="@reboot /usr/local/bin/hancoind
 */15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 service cron restart
-# auto update multi masternode
+# auto update Elastic Masternode
 elif [[ $REPLY =~ ^[Mm]$ ]]; then
 printf "Please enter your vps ip's: ${RED}(Exemple:111.111.111.111 222.222.222.222 333.333.333.333)${NC}\n"
 read -p "IP HERE:" ip
@@ -448,9 +448,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-if ! ps -C 3dcoind > /dev/null
+if ! ps -C hancoind > /dev/null
 then
-3dcoind
+hancoind
 fi" >> /usr/local/bin/check.sh
 echo "#!/bin/bash
 HOME=/root
@@ -459,18 +459,18 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-content=\$(GET https://raw.githubusercontent.com/BlockchainTechLLC/3dcoin/master/configure.ac)
-localcontent=\$(cat /root/3dcoin/configure.ac)
+content=\$(GET https://raw.githubusercontent.com/hancoin/hancoinproject/master/configure.ac)
+localcontent=\$(cat /root/Hancoin/configure.ac)
 if [ \"\$content\" == \"\$localcontent\" ];then
 exit;
 else
-killall -9 3dcoind
-rm -f /usr/local/bin/3dcoind
-dir=\$(find / -type d -name "3dcoin" -print) 
+killall -9 hancoind
+rm -f /usr/local/bin/hancoind
+dir=\$(find / -type d -name "Hancoin" -print) 
 cd \$dir
 git pull
 make install || { ./autogen.sh && ./configure --disable-tests --disable-gui-tests --without-gui && make install;  }
-3dcoind
+hancoind
 fi" >> /usr/local/bin/update.sh
 cd ~
 cd /usr/local/bin
@@ -478,7 +478,7 @@ chmod 755 check.sh
 chmod 755 update.sh
 cd ~
 crontab -r
-line="@reboot /usr/local/bin/3dcoind
+line="@reboot /usr/local/bin/hancoind
 */15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
@@ -493,7 +493,7 @@ fi
 ##################################################
 else
 printf "${YELLOW}##################################################################${NC}\n" 
-printf "${GREEN}Automatic installation for multi 3DCoin masternodes${NC}\n"
+printf "${GREEN}Automatic installation for multi Hancoin masternodes${NC}\n"
 printf "${YELLOW}##################################################################${NC}\n" 
 sleep 1
 unset ip
@@ -511,7 +511,7 @@ done
 printf "\n${YELLOW}########################################${NC}\n" 
 
 PS3="Please enter your choice: "
-options=("Install Masternode" "Install Node")
+options=("Install Elastic Masternode" "Install Elastic Node")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -583,11 +583,11 @@ printf "${GREEN}Done - Firewall/Swapfile setup${NC}\n"
 printf "${YELLOW}########################################${NC}\n"
 sleep 4
 printf "${YELLOW}########################################${NC}\n"
-printf "${GREEN}Building 3dcoin core from source .....${NC}\n" 
+printf "${GREEN}Building Hancoin core from source .....${NC}\n" 
 printf "${YELLOW}########################################${NC}\n"
 sleep 2
 cd ~
-sudo git clone https://github.com/BlockchainTechLLC/3dcoin.git
+sudo git clone https://github.com/BlockchainTechLLC/Hancoin.git
 yes | sudo apt-get update 
 export LC_ALL=en_US.UTF-8
 yes | sudo apt-get install build-essential libtool autotools-dev autoconf automake autogen pkg-config libgtk-3-dev libssl-dev libevent-dev bsdmainutils
@@ -600,7 +600,7 @@ yes | sudo apt-get install libminiupnpc-dev
 yes | sudo apt-get install libzmq3-dev
 sleep 2
 printf "${YELLOW}########################################${NC}\n"
-printf "${GREEN}Compile 3dcoin core .....${NC}\n"
+printf "${GREEN}Compile Hancoin core .....${NC}\n"
 printf "${YELLOW}########################################${NC}\n"
 sleep 4
 printf "${GREEN}Start .....${NC}\n" 
@@ -608,25 +608,25 @@ sleep 4
 printf "${YELLOW}########################################${NC}\n"
 printf "${GREEN}Autogen .....${NC}\n" 
 printf "${YELLOW}########################################${NC}\n"
-cd 3dcoin
+cd Hancoin
 ./autogen.sh
 printf "${YELLOW}########################################${NC}\n"
 printf "${GREEN}Configure .....${NC}\n" 
 printf "${YELLOW}########################################${NC}\n"
 ./configure --disable-tests --disable-gui-tests --without-gui
 printf "${YELLOW}########################################${NC}\n"
-printf "${GREEN}Make install 3DCoin core${NC}\n"
+printf "${GREEN}Make install Hancoin core${NC}\n"
 printf "${YELLOW}########################################${NC}\n"
 make install
 sleep 2
 printf "${YELLOW}########################################${NC}\n"
-printf "${GREEN}Compile 3dcoin core done${NC}\n"
+printf "${GREEN}Compile Hancoin core done${NC}\n"
 printf "${YELLOW}########################################${NC}\n"
 sleep 2
 cd ~
-rm -f ./.3dcoin/3dcoin.conf
-mkdir ./.3dcoin
-echo "$config" >> ./.3dcoin/3dcoin.conf
+rm -f ./.Hancoin/Hancoin.conf
+mkdir ./.Hancoin
+echo "$config" >> ./.Hancoin/Hancoin.conf
 cd ~
 echo "#!/bin/bash
 HOME=/root
@@ -635,9 +635,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-if ! ps -C 3dcoind > /dev/null
+if ! ps -C hancoind > /dev/null
 then
-3dcoind
+hancoind
 fi" >> /usr/local/bin/check.sh
 echo '#!/bin/bash
 HOME=/root
@@ -646,32 +646,32 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-content=$(GET https://raw.githubusercontent.com/BlockchainTechLLC/3dcoin/master/configure.ac)
-localcontent=$(cat /root/3dcoin/configure.ac)
+content=$(GET https://raw.githubusercontent.com/hancoin/hancoinproject/master/configure.ac)
+localcontent=$(cat /root/Hancoin/configure.ac)
 if [ "$content" == "$localcontent" ];then
 exit;
 else
-killall -9 3dcoind
-rm /usr/local/bin/3dcoind
-dir=$(find / -type d -name "3dcoin" -print) 
+killall -9 hancoind
+rm /usr/local/bin/hancoind
+dir=$(find / -type d -name "Hancoin" -print) 
 cd $dir
 git pull
 make install || { ./autogen.sh && ./configure --disable-tests --disable-gui-tests --without-gui && make install;  }
-3dcoind
+hancoind
 fi' >> /usr/local/bin/update.sh
 cd ~
 cd /usr/local/bin
 chmod 755 check.sh
 chmod 755 update.sh
 cd ~
-line="@reboot /usr/local/bin/3dcoind
+line="@reboot /usr/local/bin/hancoind
 */15 * * * * /usr/local/bin/check.sh
 0 0 * * * /usr/local/bin/update.sh"
 echo "$line" | crontab -u root -
 
 sleep 2
 printf "${YELLOW}########################################${NC}\n"
-printf "${GREEN}3DCoin core Installation complete${NC}\n"
+printf "${GREEN}Hancoin core Installation complete${NC}\n"
 printf "${YELLOW}########################################${NC}\n"
 printf "${GREEN}Masternode start automatically after reboot${NC}\n"
 printf "${YELLOW}########################################${NC}\n" 
