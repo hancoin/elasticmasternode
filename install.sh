@@ -4,11 +4,11 @@ GREEN='\033[00;32m'
 YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 ##################################################
-####Install Elastic Masternode with Auto-update#####
+####Install Elastic Masternodes with Auto-update#####
 ##################################################
 if [ "$1" == "-multi" ];then
 printf "${YELLOW}##################################################################${NC}\n" 
-printf "${GREEN}Automatic installation for multi Hancoin masternodes${NC}\n"
+printf "${GREEN}Automatic installation for ElasticMasternodes${NC}\n"
 printf "${YELLOW}##################################################################${NC}\n" 
 sleep 2
 printf "Please enter your vps ip's: ${RED}(Exemple:111.111.111.111 222.222.222.222 333.333.333.333)${NC}\n"
@@ -39,11 +39,11 @@ read -s -p "Please Enter Password Root $i: " rootpass
 done
 printf "\n${YELLOW}################################################${NC}\n" 
 PS3='Please enter your choice: '
-options=("Install Masternode" "Install Node")
+options=("Install Elastic Masternode" "Install ElasticMasterNode")
 select opt in "${options[@]}"
 do
     case $opt in
-        "Install Elastic Masternode")
+        "Install ElasticMasternode")
              break
            ;;
         "Install Node")
@@ -52,7 +52,7 @@ do
         *) echo invalid option;;
     esac
 done
-if [ "$opt" == "Install Masternode" ];then
+if [ "$opt" == "Install ElasticMasternode" ];then
 unset pv
 while [ -z ${pv} ]; do
 read -p "Please Enter Elastic Masternode Private key for $i: " pv
