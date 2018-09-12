@@ -5,7 +5,7 @@ Automatic install One POK Elastic HAN/EMN Masternode
 ****************************************
 
 ```
-curl -O https://raw.githubusercontent.com/hancoin/hancoinproject/master/install.sh > install.sh
+curl -O https://raw.githubusercontent.com/hancoin/elasticmasternode/master/install.sh > install.sh
 bash install.sh
 ```
 
@@ -18,7 +18,7 @@ bash install.sh
 Automatic install One Elastic Masternode masternode
 ****************************************
 ```
-curl -O https://raw.githubusercontent.com/hancoin/hancoinproject/master/install.sh > install.sh
+curl -O https://raw.githubusercontent.com/Hancoin/elasticmasternode/master/install.sh > install.sh
 bash install.sh -multi
 ```
 * local host and/or IP'S: enter your local host and/or VPS IP'S Address (Exemple:666.666.666.666.666.1.777.666.666.666).
@@ -31,11 +31,11 @@ bash install.sh -multi
 Install Auto Update & Auto check Masternode
 ****************************************
 ```
-curl -O https://raw.githubusercontent.com/Hancoin/Hancoinproject/master/install.sh > install.sh
+curl -O https://raw.githubusercontent.com/Hancoin/elasticmasternode/master/install.sh > install.sh
 bash install.sh -auto-update
 ```
 
 # Update to last version:
 ```
-curl -o- https://raw.githubusercontent.com/Hancoin/Hancoinproject/master/update.sh | bash
+curl -o- https://raw.githubusercontent.com/Hancoin/elasticmasternode/master/update.sh | bash
 ```
